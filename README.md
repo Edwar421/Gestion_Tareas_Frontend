@@ -32,7 +32,7 @@ export default tseslint.config({
 
     // Remove ...tseslint.configs.recommended and replace with this
 
-- Node.js 20.x o superior    ...tseslint.configs.recommendedTypeChecked,
+- Node.js 18.x o superior    ...tseslint.configs.recommendedTypeChecked,
 
 - AWS CLI configurado    // Alternatively, use this for stricter rules
 
@@ -42,206 +42,157 @@ export default tseslint.config({
 
     ...tseslint.configs.stylisticTypeChecked,
 
-## 🛠️ Configuración Local  ],
+"# Frontend - Gestión de Tareas"
 
-  languageOptions: {
+Aplicación frontend construida con React, TypeScript y Vite. Este proyecto se implementa en AWS (S3 + CloudFront) mediante Terraform y GitHub Actions.
 
-### 1. Instalar dependencias    // other options...
+## 🚀 Tecnologías
 
-    parserOptions: {
+- **React 18.x**
+- **TypeScript**
+- **Vite**
+- **React Router**
+- **Axios**
+- **ESLint**
+- **AWS S3**
+- **CloudFront**
+- **Terraform**
 
-```bash      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+## 📋 Requisitos previos
 
-npm install      tsconfigRootDir: import.meta.dirname,
+- `Node.js` 18.x o superior
+- `npm` o `pnpm`
+- `AWS CLI` configurado (opcional para despliegues manuales)
+- `Terraform` 1.6.0 o superior (si vas a gestionar infraestructura)
+- Cuenta de AWS con permisos para S3, CloudFront y (opcional) IAM
 
-```    },
+## 🛠️ Configuración local
 
-  },
+1. Instala dependencias:
 
-### 2. Configurar variables de entorno})
-
+```bash
+npm install
 ```
 
-Crea un archivo `.env` con la URL de tu API:
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```env
-
-VITE_API_URL=http://localhost:3000```js
-
-```// eslint.config.js
-
-import reactX from 'eslint-plugin-react-x'
-
-Para producción, usa la URL del API Gateway de AWS.import reactDom from 'eslint-plugin-react-dom'
-
-
-
-### 3. Ejecutar en modo desarrolloexport default tseslint.config({
-
-  plugins: {
-
-```bash    // Add the react-x and react-dom plugins
-
-npm run dev    'react-x': reactX,
-
-```    'react-dom': reactDom,
-
-  },
-
-La aplicación estará disponible en `http://localhost:5173`  rules: {
-
-    // other rules...
-
-## 🏗️ Build y Deploy    // Enable its recommended typescript rules
-
-    ...reactX.configs['recommended-typescript'].rules,
-
-### Build local    ...reactDom.configs.recommended.rules,
-
-  },
-
-```bash})
-
-npm run build```
+2. Crea un archivo `.env` en la raíz con la URL de la API:
 
 ```
-
-### Deploy a AWS
-
-El deploy se ejecuta automáticamente mediante GitHub Actions cuando haces push a la rama `main`.
-
-## 🔐 Secrets de GitHub
-
-Configura los siguientes secrets en tu repositorio de GitHub:
-
-### AWS Credentials
-- `AWS_ACCESS_KEY_ID` - Access Key ID de AWS
-- `AWS_SECRET_ACCESS_KEY` - Secret Access Key de AWS
-
-### Variables de Entorno
-- `VITE_API_URL` - URL del API Gateway (ej: `https://xxxxxx.execute-api.us-east-1.amazonaws.com`)
-
-## 📁 Estructura del Proyecto
-
-```
-frontend/
-├── src/
-│   ├── components/
-│   │   ├── atoms/          # Componentes básicos (Button, Input, etc)
-│   │   ├── molecules/      # Componentes compuestos (Forms, Cards)
-│   │   ├── organisms/      # Secciones complejas (TaskList)
-│   │   └── templates/      # Layouts de páginas
-│   ├── pages/              # Páginas de la aplicación
-│   ├── services/           # Servicios API
-│   ├── types/              # Tipos de TypeScript
-│   ├── App.tsx             # Componente principal
-│   └── main.tsx            # Punto de entrada
-├── terraform/              # Infraestructura como código
-│   ├── s3.tf              # Bucket S3
-│   ├── cloudfront.tf      # Distribución CloudFront
-│   └── ...
-├── public/                 # Archivos estáticos
-└── .github/
-    └── workflows/
-        └── deploy.yml      # Pipeline CI/CD
+VITE_API_URL=http://localhost:3000
 ```
 
-## 🎨 Componentes
+3. Ejecuta el servidor de desarrollo:
 
-### Atoms
-- **Button** - Botón reutilizable con variantes
-- **Input** - Campo de entrada con validación
-- **Modal** - Modal genérico
-- **ThemeToggle** - Selector de tema claro/oscuro
+```bash
+npm run dev
+```
 
-### Molecules
-- **LoginForm** - Formulario de inicio de sesión
-- **RegisterForm** - Formulario de registro
-- **TaskForm** - Formulario de creación de tareas
-- **EditTaskForm** - Formulario de edición de tareas
-- **TaskCard** - Tarjeta individual de tarea
+La aplicación estará disponible en `http://localhost:5173`.
 
-### Organisms
-- **TaskList** - Lista de tareas con filtros
+## 🏗️ Build y deploy
 
-### Templates
-- **AuthTemplate** - Layout para páginas de autenticación
-- **DashboardTemplate** - Layout para el dashboard
+Construir la aplicación:
 
-### Pages
-- **LoginPage** - Página de inicio de sesión
-- **RegisterPage** - Página de registro
-- **DashboardPage** - Página principal con tareas
+```bash
+npm run build
+```
 
-## 🧪 Testing
+El despliegue se puede automatizar con GitHub Actions. En este repositorio, el flujo de trabajo por defecto despliega cuando se hace push a la rama `main`.
+
+### Secrets de GitHub necesarios para el deploy
+
+- `AWS_ACCESS_KEY_ID` — Access Key ID de AWS
+- `AWS_SECRET_ACCESS_KEY` — Secret Access Key de AWS
+- `VITE_API_URL` — URL del backend (por ejemplo, el API Gateway)
+
+## 📁 Estructura del proyecto
+
+```
+src/
+├── components/
+│   ├── atoms/
+│   ├── molecules/
+│   ├── organisms/
+│   └── templates/
+├── pages/
+├── services/
+├── types/
+├── App.tsx
+└── main.tsx
+terraform/
+public/
+```
+
+## 🎨 Componentes principales
+
+- Atoms: `Button`, `Input`, `Modal`, `ThemeToggle`
+- Molecules: `LoginForm`, `RegisterForm`, `TaskForm`, `EditTaskForm`, `TaskCard`
+- Organisms: `TaskList`
+- Templates: `AuthTemplate`, `DashboardTemplate`
+- Pages: `LoginPage`, `RegisterPage`, `DashboardPage`
+
+## 🧪 Pruebas
+
+Ejecuta las pruebas unitarias:
 
 ```bash
 npm test
 ```
 
-## 📦 Infraestructura AWS
+## 📦 Infraestructura (AWS)
 
-La infraestructura incluye:
+La infraestructura incluida en `terraform/` gestiona:
 
-- **S3 Bucket**: Hosting de archivos estáticos
-- **CloudFront Distribution**: CDN global con HTTPS
-- **Cache Policy**: Optimización de cache para assets
-- **OAI**: Origin Access Identity para seguridad
+- Un bucket S3 para alojar los archivos estáticos
+- Una distribución CloudFront para CDN y HTTPS
+- Políticas de cache optimizadas para assets
+- (Opcional) OAI para restringir acceso al bucket
 
-## 🔄 CI/CD Pipeline
+## 🔄 CI/CD
 
-El pipeline de GitHub Actions:
+El pipeline de GitHub Actions generalmente realiza:
 
-1. Instala dependencias
-2. Compila la aplicación con Vite
-3. Despliega infraestructura con Terraform
-4. Sincroniza archivos build con S3
-5. Invalida cache de CloudFront
-6. Muestra la URL del sitio web
+1. Instalar dependencias
+2. Compilar la aplicación con Vite
+3. Aplicar cambios de infraestructura con Terraform (opcional)
+4. Sincronizar el `build/` con el bucket S3
+5. Invalidar la caché de CloudFront
 
-## 🌐 Características
+## 🌐 Funcionalidades principales
 
-- ✅ Autenticación con JWT
-- ✅ CRUD completo de tareas
-- ✅ Estados de tareas (pendiente, en progreso, completada)
-- ✅ Prioridades de tareas (baja, media, alta)
-- ✅ Tema claro/oscuro
-- ✅ Diseño responsive
-- ✅ Validación de formularios
-- ✅ Manejo de errores
-- ✅ Loading states
+- Autenticación con JWT
+- CRUD completo de tareas
+- Estados de tareas: pendiente, en progreso, completada
+- Prioridades de tareas: baja, media, alta
+- Tema claro/oscuro y diseño responsive
 
-## 🎯 Funcionalidades de Tareas
+## 🎯 Acciones sobre tareas
 
-- **Crear**: Añadir nuevas tareas con título, descripción, prioridad
-- **Leer**: Ver lista de todas las tareas
-- **Actualizar**: Editar tareas existentes, cambiar estado
-- **Eliminar**: Borrar tareas completadas o no deseadas
-- **Filtrar**: Filtrar por estado o prioridad
+- Crear: añadir nuevas tareas con título, descripción y prioridad
+- Leer: listar tareas
+- Actualizar: editar tareas y cambiar su estado
+- Eliminar: eliminar tareas
+- Filtrar: filtrar por estado o prioridad
 
 ## 🔒 Seguridad
 
 - Tokens JWT almacenados de forma segura
-- Refresh tokens para sesiones persistentes
-- Validación de entrada en formularios
-- Protección de rutas autenticadas
-- HTTPS en producción con CloudFront
+- Uso de refresh tokens para sesiones persistentes
+- Validación de entradas en formularios
+- Rutas protegidas para usuarios autenticados
+- HTTPS en producción (via CloudFront)
 
-## 📝 Notas Importantes
+## 📝 Notas importantes
 
-- El estado de Terraform se guarda localmente (considera usar S3 backend para producción)
-- CloudFront puede tardar 15-20 minutos en propagarse globalmente
-- La invalidación de cache es instantánea pero tiene costo después de las primeras 1000 al mes
-- Los assets tienen hash en el nombre para cache-busting automático
+- Considerar usar un backend remoto para el estado de Terraform (ej. S3) en entornos de equipo
+- CloudFront puede tardar varios minutos en propagarse
+- Las invalidaciones de CloudFront tienen coste después de cierto número
 
 ## 🤝 Contribuir
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
+1. Haz fork del proyecto
+2. Crea una rama para tu feature: `git checkout -b feature/mi-feature`
+3. Haz commits descriptivos
+4. Envía tu rama al repositorio remoto: `git push origin feature/mi-feature`
 5. Abre un Pull Request
 
 ## 📄 Licencia
