@@ -1,49 +1,5 @@
 # Frontend - Gestión de Tareas# React + TypeScript + Vite
 
-
-
-Aplicación frontend construida con React, TypeScript y Vite, desplegada en AWS S3 + CloudFront.This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-
-
-## 🚀 TecnologíasCurrently, two official plugins are available:
-
-
-
-- **React 18.x**- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-
-- **TypeScript** - Tipado estático- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-- **Vite** - Build tool y dev server
-
-- **React Router** - Navegación## Expanding the ESLint configuration
-
-- **Axios** - Cliente HTTP
-
-- **AWS S3** - Hosting de archivos estáticosIf you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-- **CloudFront** - CDN
-
-- **Terraform** - Infraestructura como código```js
-
-export default tseslint.config({
-
-## 📋 Requisitos Previos  extends: [
-
-    // Remove ...tseslint.configs.recommended and replace with this
-
-- Node.js 18.x o superior    ...tseslint.configs.recommendedTypeChecked,
-
-- AWS CLI configurado    // Alternatively, use this for stricter rules
-
-- Terraform 1.6.0 o superior    ...tseslint.configs.strictTypeChecked,
-
-- Cuenta de AWS    // Optionally, add this for stylistic rules
-
-    ...tseslint.configs.stylisticTypeChecked,
-
-"# Frontend - Gestión de Tareas"
-
 Aplicación frontend construida con React, TypeScript y Vite. Este proyecto se implementa en AWS (S3 + CloudFront) mediante Terraform y GitHub Actions.
 
 ## 🚀 Tecnologías
@@ -102,7 +58,6 @@ El despliegue se puede automatizar con GitHub Actions. En este repositorio, el f
 
 - `AWS_ACCESS_KEY_ID` — Access Key ID de AWS
 - `AWS_SECRET_ACCESS_KEY` — Secret Access Key de AWS
-- `VITE_API_URL` — URL del backend (por ejemplo, el API Gateway)
 
 ## 📁 Estructura del proyecto
 
@@ -187,14 +142,3 @@ El pipeline de GitHub Actions generalmente realiza:
 - CloudFront puede tardar varios minutos en propagarse
 - Las invalidaciones de CloudFront tienen coste después de cierto número
 
-## 🤝 Contribuir
-
-1. Haz fork del proyecto
-2. Crea una rama para tu feature: `git checkout -b feature/mi-feature`
-3. Haz commits descriptivos
-4. Envía tu rama al repositorio remoto: `git push origin feature/mi-feature`
-5. Abre un Pull Request
-
-## 📄 Licencia
-
-ISC
